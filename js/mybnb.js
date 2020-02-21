@@ -136,7 +136,7 @@ let createAvatar = () => {
         var putAvatar = document.getElementById("userAvatar")
         var htmlConnected =  `
         <div > 
-        <a href="profile1.html">${userNotConnected.}</a>
+        <a href="profile1.html">${userNotConnected.firstName}</a>
         <button type="submit" onclick="logout()">logout</button>
        <a href="profile1.html"> <img src="images/featured-img/img-05.jpg" alt="Avatar" class="avatar"></a>
         </div>
