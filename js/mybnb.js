@@ -33,7 +33,9 @@ window.onclick = function(event) {
     var pass1 = document.querySelector(".pw").value;
     var mail = document.querySelector(".email").value;
     var id = Math.floor((Math.random() * 10000));
-    console.log(id);  // the id takes the value of age ??!!
+    var firstName = document.querySelector(".firstName").value;
+    var lastName = document.querySelector(".lastName").value;
+    // console.log(firstName); 
     
     
     var loc = JSON.parse(localStorage.getItem("user")) || [];  
@@ -42,9 +44,11 @@ window.onclick = function(event) {
         email: mail,
         password: pass1,
         id : id ,
+        firstName : firstName ,
+        lastName : lastName ,
     }
      loc.push(object);
-     console.log(loc);
+    //  console.log(loc);
      
      localStorage.setItem("user",JSON.stringify(loc))
   
@@ -132,7 +136,7 @@ let createAvatar = () => {
         var putAvatar = document.getElementById("userAvatar")
         var htmlConnected =  `
         <div > 
-        
+        <a href="profile1.html">${userNotConnected.}</a>
         <button type="submit" onclick="logout()">logout</button>
        <a href="profile1.html"> <img src="images/featured-img/img-05.jpg" alt="Avatar" class="avatar"></a>
         </div>
