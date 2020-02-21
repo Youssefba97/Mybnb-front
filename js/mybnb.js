@@ -6,7 +6,24 @@ window.onclick = function(event) {
       modal.style.display = "none";
     }
   }
+  function logout() {
+    localStorage.removeItem("con_user")
+    window.location.replace("index.html") ;
+  }
 
+  function comparepw() {
+    var pw = document.querySelector(".pw");
+    var pw1 = document.querySelector(".pw1");
+    console.log(pw.value);
+    console.log(pw1.value);
+    
+    
+    if ((pw.value != pw1.value ) || (pw.value  == ""  )) {
+      return false; 
+    } else {
+               return true;
+    }
+  }
 
 // The user can create an account 
 
@@ -33,31 +50,20 @@ window.onclick = function(event) {
   
   }
 
-  var pw = document.querySelector(".pw");
 var email = document.querySelector(".email");
 let signupbtn = document.querySelector(".register");
 signupbtn.addEventListener("click",()=>{
-    if (!comparepw()) {
+    if (comparepw()==false) {
       alert ("Wrong pw ")
     } else {
       alert ("Welcome ")
       // console.log(window.er);
-
-        window.location.href="./modal.html"
    saving()
-    // window.location.replace = "file:///C:/Users/Youssef/Desktop/5p/20-1/modal.html"
     }
    
 
 });
-function comparepw() {
-  var pw1 = document.querySelector(".pw1");
-  if (pw.value != pw1.value) {
-    return false; 
-  } else {
-             return true;
-  }
-}
+
 
 
 // The user can log in 
@@ -72,7 +78,7 @@ console.log(pass);
     var user = JSON.parse(localStorage.getItem("user")) || [];
     //pw = localStorage.getItem ("password")
     
-    console.log(user[0].email);    console.log(user[0].password);
+    // console.log(user[0].email);    console.log(user[0].password);
 
     var loginMail= false ;
     var loginPw = false ;
@@ -84,17 +90,67 @@ console.log(pass);
         if (pass == user[i].password) {    
             loginPw = true ;
             localStorage.setItem("con_user",JSON.stringify(user[i]));
-            // window.location.href = "http://127.0.0.1:5500/afficher.html"
             break ;
         }
     
     }  
 }   
 if (loginMail == true && loginPw == true) {
-    alert ("you are logged in")
-                window.open  ("http://127.0.0.1:5500/afficher.html","_blank")
+    alert ("you are logged in") 
+        location.reload() ;
 
 } 
 else alert ("please verify your e-mail or pw")
 }
 
+// if the user is not connected and clicks on "become a host" it opens the modal of log in
+
+let verifyConnected = () => {
+    var userHost = JSON.parse(localStorage.getItem("con_user")) || "";
+    console.log(userHost);
+    
+    if (userHost != "") {
+        var becomeahost = document.getElementById("becomeahost")
+        var html = `<a href="becomeahost.html"  >Become a host</a>`
+        becomeahost.innerHTML=html ;
+    }
+    else {
+        var becomeahost = document.getElementById("becomeahost")
+        var html = `<a href="javascript:void(0);"  data-toggle="modal" data-target="#loginpopup">Become a host</a>`
+        becomeahost.innerHTML=html ;
+    }
+
+}
+
+// when the user connects his photo appears 
+
+let createAvatar = () => {
+    var userNotConnected = JSON.parse(localStorage.getItem("con_user")) || "";
+    console.log(userNotConnected);
+    
+    if (userNotConnected != "") {
+        var putAvatar = document.getElementById("userAvatar")
+        var htmlConnected =  `
+        <div > 
+        
+        <button type="submit" onclick="logout()">logout</button>
+       <a href="profile1.html"> <img src="images/featured-img/img-05.jpg" alt="Avatar" class="avatar"></a>
+        </div>
+        `
+    putAvatar.innerHTML=htmlConnected ;
+console.log("userconncted");
+    
+    }
+    else {
+        var disconnected = document.getElementById("userAvatar")
+        var htmlDisconnected = `
+        <a href="javascript:void(0);" class="at-btn at-btnactive" data-toggle="modal" data-target="#loginpopup">Log in</a>
+        <em>OR</em>
+        <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#registerpopup">Register</a>`
+    disconnected.innerHTML=htmlDisconnected ;
+console.log("user offline");
+   
+}
+    
+
+}

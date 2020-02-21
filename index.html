@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
-<body class="at-home">
+<body class="at-home" onload="verifyConnected(); createAvatar()">
 	<!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -52,7 +52,7 @@
 							<div class="at-topbar">
 								
 								<div class="at-loginarea float-right">
-									<div class="at-detailsbtn-topbar">
+									<div class="at-detailsbtn-topbar" id="userAvatar">
 										<a href="javascript:void(0);" class="at-btn at-btnactive" data-toggle="modal" data-target="#loginpopup">Log in</a>
 										<em>OR</em>
 										<a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#registerpopup">Register</a>
@@ -170,7 +170,7 @@
 													</li>
 												</ul>
 											</li>
-											<li class="nav-item">
+											<li class="nav-item" id="becomeahost">
 												<a href="becomeahost.html">Become a host</a>
 											</li>
 											<li class="nav-item">
@@ -197,7 +197,7 @@
 					<figure class="item"><img src="images/slider-imgs/img-01.jpg" alt="slider img"></figure>
 					<figure class="item"><img src="images/slider-imgs/img-02.jpg" alt="slider img"></figure>
 					<figure class="item"><img src="images/slider-imgs/img-05.jpg" alt="slider img"></figure>
-					<figure class="item"><img src="images/slider-imgs/LAMARSA.jpg" alt="slider img"></figure>
+					<figure class="item"><img src="images/slider-imgs/.jpg" alt="slider img"></figure>
 				</div>
 				<div id="at-homeslider-thumbnail" class="at-homeslider-thumbnail owl-carousel">
 					<div class="item at-thumbnail-content">
@@ -232,11 +232,11 @@
 											<div class="at-select">
 												<select >
 													<option value="" hidden="">Where You Want To Stay</option>
-													<option value="twitter">China</option>
-													<option value="linkedin">France</option>
-													<option value="rss">Germany</option>
-													<option value="vimeo">Italy</option>
-													<option value="tumblr">Japan</option>
+													<option value="twitter">Le kef</option>
+													<option value="linkedin">Ain drahem</option>
+													<option value="rss">Sousse</option>
+													<option value="vimeo">Djerba</option>
+													<option value="tumblr">Nabeul</option>
 												</select>
 											</div>
 										</div>
@@ -717,6 +717,7 @@
 												<div class="at-featured-title">
 													<h3>Balsam Fir Bungalow Suite <span>$120 <em>/ night</em></span></h3>
 													<div class="at-userimg at-verifieduser">
+														<img src="avatar.png" alt="Avatar" class="avatar">
 														<img src="images/featured-img/img-05.jpg" alt="img description">
 														<i class="fa fa-shield-alt"></i>
 													</div>
@@ -1323,8 +1324,8 @@
 				 		<span>By signing in  you agree to these <a href="javascript:void(0);"> Terms &amp; Conditions</a> &amp; consent to<a href="javascript:void(0);"> Cookie Policy &amp; Privacy Policy.</a></span>
 				 	</div>
 				 	<div class="at-loginfooterinfo">
-						<a href="javascript:void(0);"><em>Not a member?</em> Signup Now</a>
-						<a href="javascript:;" class="at-forgot-password">Forgot password?</a>
+						<a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#registerpopup"><em>Not a member?</em> Signup Now</a>
+						<a href="javascript:void(0);" class="at-forgot-password">Forgot password?</a>
 					</div>
 				 </div>
 			</div>
@@ -1342,6 +1343,15 @@
 				<div class="modal-body">
 					<form class="at-formtheme at-formlogin">
 						<fieldset>
+							<div class="form-group">
+								<input type="text" name="First name" value="" class="form-control email" placeholder="First name*" required="">
+							</div>
+							<div class="form-group">
+								<input type="text" name="Last name" value="" class="form-control email" placeholder="Last name*" required="">
+							</div>
+							<div class="form-group">
+								<input type="phone" name="Phone number" value="" class="form-control email" placeholder="Your phone number*" required="">
+							</div>
 							<div class="form-group">
 								<input type="text" name="email" value="" class="form-control email" placeholder="Your Email*" required="">
 							</div>
